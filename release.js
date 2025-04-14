@@ -9,6 +9,7 @@ if (!valid.includes(type)) {
 }
 
 try {
+  execSync("npm run build", { stdio: "inherit" });
   execSync(`npm version ${type}`, { stdio: "inherit" });
   execSync("git push", { stdio: "inherit" });
   execSync("git push --tags", { stdio: "inherit" });
