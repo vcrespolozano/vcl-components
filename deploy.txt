@@ -1,2 +1,5 @@
 git tag vX.X.X
 git push origin vX.X.X
+
+// Nueva forma de despliegue
+npm run release (admite un parámetro opcional para indicar qué tipo de versión, si no se indica, por defecto será patch (tercer número), si se indica será uno de estos: minor,major)

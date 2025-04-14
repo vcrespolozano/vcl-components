@@ -16,6 +16,7 @@ export interface CardProps {
   align?: "left" | "right" | "center";
   className?: string;
   neonBorder?: boolean;
+  onClick?: () => void;
 }
 
 export const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
@@ -32,6 +33,7 @@ export const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
   neonBorder = false,
   className,
   children,
+  onClick,
 }) => {
   return (
     <div
@@ -40,6 +42,7 @@ export const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
       } ${borderLess ? "borderLess" : ""} ${neonBorder ? "neonBorder" : ""} ${
         className || ""
       }`}
+      onClick={onClick}
     >
       {title && (
         <Text

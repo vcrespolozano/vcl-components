@@ -11,3 +11,4 @@ export * from "@components/atoms/Link";
 export * from "@components/molecules/Card";
 export * from "@components/molecules/HoverableColumn";
 export * from "@components/molecules/Modal";
+export * from "@components/molecules/Card/RadioCardButton";

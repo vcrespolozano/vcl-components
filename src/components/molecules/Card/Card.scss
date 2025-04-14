@@ -54,4 +54,16 @@
       justify-content: center;
     }
   }
+
+  &.radio-card {
+    cursor: pointer;
+    width: auto;
+    &.checked {
+      background: variables.$color-primary-shadow;
+      border: 1px solid variables.$color-primary;
+    }
+    input {
+      display: none;
+    }
+  }
 }
