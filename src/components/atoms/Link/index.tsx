@@ -7,6 +7,7 @@ export interface LinkProps {
   className?: string;
   target?: "_blank" | "_self";
   rel?: string;
+  title?: string;
 }
 
 export const Link: React.FC<React.PropsWithChildren<LinkProps>> = ({
@@ -15,6 +16,7 @@ export const Link: React.FC<React.PropsWithChildren<LinkProps>> = ({
   className,
   target = "_self",
   rel,
+  title,
   children,
 }) => {
   return (
@@ -24,6 +26,7 @@ export const Link: React.FC<React.PropsWithChildren<LinkProps>> = ({
       className={`link ${className || ""}`}
       target={target}
       rel={rel || ""}
+      title={title || ""}
     >
       {children}
     </a>
