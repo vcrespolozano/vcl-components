@@ -5,31 +5,31 @@
 
   &.size_small {
     font-size: 1.4rem;
-    line-height: 1.6rem;
+    line-height: 2rem;
   }
   &.size_normal {
     font-size: 1.6rem;
-    line-height: 1.8rem;
+    line-height: 2.2rem;
   }
   &.size_medium {
     font-size: 1.8rem;
-    line-height: 2rem;
+    line-height: 2.4rem;
   }
   &.size_big {
     font-size: 2rem;
-    line-height: 2.2rem;
+    line-height: 2.6rem;
   }
   &.size_title {
     font-size: 2.4rem;
-    line-height: 2.8rem;
+    line-height: 3rem;
   }
   &.size_bigTitle {
     font-size: 2.8rem;
-    line-height: 3.2rem;
+    line-height: 3.4rem;
   }
   &.size_enormous {
     font-size: 4rem;
-    line-height: 4.4rem;
+    line-height: 4.6rem;
   }
 
   &.weight_light {
@@ -90,28 +90,28 @@
   .text {
     &.size_small {
       font-size: 1.2rem;
-      line-height: 1.4rem;
+      line-height: 1.6rem;
     }
     &.size_normal,
     &.size_medium {
       font-size: 1.4rem;
-      line-height: 1.6rem;
+      line-height: 1.8rem;
     }
     &.size_big {
       font-size: 1.6rem;
-      line-height: 1.8rem;
+      line-height: 2rem;
     }
     &.size_title {
       font-size: 1.8rem;
-      line-height: 2rem;
+      line-height: 2.2rem;
     }
     &.size_bigTitle {
       font-size: 2.2rem;
-      line-height: 2.4rem;
+      line-height: 2.6rem;
     }
     &.size_enormous {
       font-size: 2.8rem;
-      line-height: 3rem;
+      line-height: 3.2rem;
     }
 
     &.margin_top {
