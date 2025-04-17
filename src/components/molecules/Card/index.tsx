@@ -41,7 +41,7 @@ export const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
         blurred ? "blurred" : ""
       } ${borderLess ? "borderLess" : ""} ${neonBorder ? "neonBorder" : ""} ${
         className || ""
-      }`}
+      } ${onClick ? "clickable" : ""}`}
       onClick={onClick}
     >
       {title && (

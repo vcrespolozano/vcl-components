@@ -32,6 +32,16 @@
       inset 0 0 1.3rem variables.$color-primary-shadow;
   }
 
+  &.clickable {
+    cursor: pointer;
+    @include mixins.transition(300ms);
+
+    &:hover {
+      background: variables.$color-primary-shadow;
+      border: 1px solid variables.$color-primary;
+    }
+  }
+
   &__title {
     margin-bottom: 1.6rem;
   }
