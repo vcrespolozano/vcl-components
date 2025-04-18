@@ -61,9 +61,9 @@ export const Textarea: React.FC<TextareaProps> = ({
           onBlur={handleBlur}
           className={errorMsg ? "withError" : ""}
           style={height ? { height: `${height}px` } : {}}
-        >
-          {value}
-        </textarea>
+          value={value}
+          defaultValue=""
+        />
       </div>
       {errorMsg && <span className="textarea__error">{errorMsg}</span>}
     </div>
