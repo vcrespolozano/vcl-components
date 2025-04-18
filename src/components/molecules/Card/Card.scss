@@ -7,6 +7,10 @@
   width: 90%;
   margin: 0 auto;
 
+  &.withIcon {
+    padding-left: 8rem;
+  }
+
   &.rounded {
     border-radius: 1.6rem;
   }
@@ -63,6 +67,17 @@
     &.align-center {
       justify-content: center;
     }
+  }
+
+  &__icon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    margin: auto 0;
+    left: 25px;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
   }
 
   &.radio-card {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import "./Card.scss";
 import { Text } from "@components/atoms/Text";
 import { Button } from "@components/atoms/Button";
@@ -17,6 +17,8 @@ export interface CardProps {
   className?: string;
   neonBorder?: boolean;
   onClick?: () => void;
+  icon?: ReactNode;
+  iconClassName?: string;
 }
 
 export const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
@@ -34,16 +36,21 @@ export const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
   className,
   children,
   onClick,
+  icon,
+  iconClassName,
 }) => {
   return (
     <div
       className={`card ${rounded ? "rounded" : ""} ${shadow ? "shadow" : ""} ${
         blurred ? "blurred" : ""
       } ${borderLess ? "borderLess" : ""} ${neonBorder ? "neonBorder" : ""} ${
-        className || ""
-      } ${onClick ? "clickable" : ""}`}
+        icon ? "withIcon" : ""
+      } ${className || ""} ${onClick ? "clickable" : ""}`}
       onClick={onClick}
     >
+      {icon && (
+        <div className={`card__icon ${iconClassName || ""}`}>{icon}</div>
+      )}
       {title && (
         <Text
           value={title}

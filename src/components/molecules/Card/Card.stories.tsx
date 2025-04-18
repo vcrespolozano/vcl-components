@@ -3,6 +3,7 @@ import { Card } from "@components/molecules/Card";
 import { RadioButtonCard } from "./RadioCardButton";
 import readme from "./Card.md?raw";
 import { useState } from "react";
+import { DiReact } from "react-icons/di";
 
 export default {
   title: "Components/molecules/Card",
@@ -61,6 +62,15 @@ WithButton.args = {
   rounded: true,
   buttonOnClick: () => alert("Button Clicked"),
   buttonLabel: "Button",
+};
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  title: "With Icon",
+  description: "Description",
+  shadow: true,
+  rounded: true,
+  icon: <DiReact size={36} />,
 };
 
 export const Blurred = Template.bind({});
