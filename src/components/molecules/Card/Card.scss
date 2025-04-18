@@ -92,3 +92,17 @@
     }
   }
 }
+
+@include mixins.mobile {
+  .card {
+    padding: 1.5rem;
+
+    &.withIcon {
+      padding-left: 6rem;
+    }
+
+    &__icon {
+      left: 15px;
+    }
+  }
+}
