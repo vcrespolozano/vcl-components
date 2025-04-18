@@ -62,7 +62,6 @@ export const Textarea: React.FC<TextareaProps> = ({
           className={errorMsg ? "withError" : ""}
           style={height ? { height: `${height}px` } : {}}
           value={value}
-          defaultValue=""
         />
       </div>
       {errorMsg && <span className="textarea__error">{errorMsg}</span>}
