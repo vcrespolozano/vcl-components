@@ -1,6 +1,6 @@
 {
   "name": "@vcrespolozano/vcl-components",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "type": "module",
   "main": "dist/vcl-components.cjs.js",
   "module": "dist/vcl-components.es.js",
