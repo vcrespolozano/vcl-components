@@ -1,11 +1,47 @@
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Card } from "@components/molecules/Card";
 import { RadioButtonCard } from "./RadioCardButton";
 import readme from "./Card.md?raw";
 import { useState } from "react";
 import { DiReact } from "react-icons/di";
 
-export default {
+// Componente wrapper para RadioButtonCard
+function RadioCardDemo() {
+  const [selectedValue, setSelectedValue] = useState<string | null>(null);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedValue(event.target.value);
+  };
+
+  return (
+    <div className="flex-grid">
+      <RadioButtonCard
+        title="Radio Button Card 1"
+        onChange={handleChange}
+        name="radio-example"
+        value="radio-1"
+        checked={selectedValue === "radio-1"}
+        shadow={true}
+        rounded={true}
+        borderLess={true}
+        neonBorder={true}
+      />
+      <RadioButtonCard
+        title="Radio Button Card 2"
+        onChange={handleChange}
+        name="radio-example"
+        value="radio-2"
+        checked={selectedValue === "radio-2"}
+        shadow={true}
+        rounded={true}
+        borderLess={true}
+        neonBorder={true}
+      />
+    </div>
+  );
+}
+
+const meta = {
   title: "Components/molecules/Card",
   component: Card,
   argTypes: {},
@@ -16,80 +52,53 @@ export default {
       },
     },
   },
-} as Meta<typeof Card>;
+} satisfies Meta<typeof Card>;
 
-const Template: StoryFn<typeof Card> = (args) => <Card {...args} />;
-const RadioCardTemplate: StoryFn<typeof RadioButtonCard> = (args) => {
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);
-  };
-
-  return (
-    <div className="flex-grid">
-      <RadioButtonCard
-        {...args}
-        title="Radio Button Card 1"
-        onChange={handleChange}
-        name="radio-example"
-        value="radio-1"
-        checked={selectedValue === "radio-1"}
-      />
-      <RadioButtonCard
-        {...args}
-        title="Radio Button Card 2"
-        onChange={handleChange}
-        name="radio-example"
-        value="radio-2"
-        checked={selectedValue === "radio-2"}
-      />
-    </div>
-  );
+export const Default: Story = {
+  args: {
+    title: "Title",
+    description: "Description",
+  },
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  title: "Title",
-  description: "Description",
+export const WithButton: Story = {
+  args: {
+    title: "With Button",
+    description: "Description",
+    shadow: true,
+    rounded: true,
+    buttonOnClick: () => alert("Button Clicked"),
+    buttonLabel: "Button",
+  },
 };
 
-export const WithButton = Template.bind({});
-WithButton.args = {
-  title: "With Button",
-  description: "Description",
-  shadow: true,
-  rounded: true,
-  buttonOnClick: () => alert("Button Clicked"),
-  buttonLabel: "Button",
+export const WithIcon: Story = {
+  args: {
+    title: "With Icon",
+    description: "Description",
+    shadow: true,
+    rounded: true,
+    icon: <DiReact size={36} />,
+  },
 };
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  title: "With Icon",
-  description: "Description",
-  shadow: true,
-  rounded: true,
-  icon: <DiReact size={36} />,
+export const Blurred: Story = {
+  args: {
+    title: "With Button",
+    description: "Description",
+    shadow: true,
+    rounded: true,
+    buttonOnClick: () => alert("Button Clicked"),
+    buttonLabel: "Button",
+    blurred: true,
+    borderLess: true,
+    neonBorder: true,
+  },
 };
 
-export const Blurred = Template.bind({});
-Blurred.args = {
-  title: "With Button",
-  description: "Description",
-  shadow: true,
-  rounded: true,
-  buttonOnClick: () => alert("Button Clicked"),
-  buttonLabel: "Button",
-  blurred: true,
-  borderLess: true,
-  neonBorder: true,
-};
-
-export const RadioButtonCardExample = RadioCardTemplate.bind({});
-RadioButtonCardExample.args = {
-  shadow: true,
-  rounded: true,
-  borderLess: true,
-  neonBorder: true,
+export const RadioButtonCardExample: Story = {
+  render: () => <RadioCardDemo />,
 };

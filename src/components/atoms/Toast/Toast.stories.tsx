@@ -1,25 +1,11 @@
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Toast } from "@components/atoms/Toast";
 import readme from "./Toast.md?raw";
 import { useState } from "react";
 import { Button } from "@components/atoms/Button";
 
-// Metadatos sobre el componente
-export default {
-  title: "Components/atoms/Toast", // Categoría y nombre
-  component: Toast,
-  argTypes: {},
-  parameters: {
-    docs: {
-      description: {
-        component: readme,
-      },
-    },
-  },
-} as Meta<typeof Toast>;
-
-// Plantilla base
-const Template: StoryFn<typeof Toast> = () => {
+// Componente wrapper para usar hooks
+function ToastDemo() {
   const [toastDesc, setToastDesc] = useState<string>("");
 
   return (
@@ -33,8 +19,27 @@ const Template: StoryFn<typeof Toast> = () => {
       )}
     </div>
   );
-};
+}
+
+// Metadatos sobre el componente
+const meta = {
+  title: "Components/atoms/Toast", // Categoría y nombre
+  component: Toast,
+  argTypes: {},
+  parameters: {
+    docs: {
+      description: {
+        component: readme,
+      },
+    },
+  },
+  render: () => <ToastDemo />,
+} satisfies Meta<typeof Toast>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 // Variaciones de la plantilla
-export const Default = Template.bind({});
-Default.args = {};
+export const Default: Story = {
+  args: {},
+};

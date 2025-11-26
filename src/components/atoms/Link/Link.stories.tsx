@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Link } from "@components/atoms/Link";
 import readme from "./Link.md?raw";
 
-export default {
+const meta = {
   title: "Components/atoms/Link",
   component: Link,
   argTypes: {},
@@ -13,12 +13,14 @@ export default {
       },
     },
   },
-} as Meta<typeof Link>;
+} satisfies Meta<typeof Link>;
 
-const Template: StoryFn<typeof Link> = (args) => <Link {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  onClick: () => alert("Link clicked"),
-  children: "Click me",
+export const Default: Story = {
+  args: {
+    onClick: () => alert("Link clicked"),
+    children: "Click me",
+  },
 };

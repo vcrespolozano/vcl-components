@@ -1,12 +1,35 @@
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Input } from "@components/atoms/Input";
 import readme from "./Input.md?raw";
 import { useState } from "react";
 
+// Componente wrapper para usar hooks
+function InputWrapper(
+  props: Omit<React.ComponentProps<typeof Input>, "onChange">
+) {
+  const [value, setValue] = useState<string>("");
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+
+  return (
+    <Input
+      {...(props as React.ComponentProps<typeof Input>)}
+      value={value}
+      onChange={onChange}
+    />
+  );
+}
+
+type StoryMetaType = Omit<Meta<typeof Input>, "component"> & {
+  component: typeof InputWrapper;
+};
+
 // Metadatos sobre el componente
-export default {
-  title: "Components/atoms/Input", // Categoría y nombre
-  component: Input,
+const meta: StoryMetaType = {
+  title: "Components/atoms/Input",
+  component: InputWrapper,
   argTypes: {},
   parameters: {
     docs: {
@@ -15,54 +38,51 @@ export default {
       },
     },
   },
-} as Meta<typeof Input>;
-
-// Plantilla base
-const Template: StoryFn<typeof Input> = (args) => {
-  const [value, setValue] = useState<string>("");
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
-
-  return <Input {...args} value={value} onChange={onChange} />;
 };
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 // Variaciones de la plantilla
-export const Default = Template.bind({});
-Default.args = {
-  name: "exampleInput",
-  id: "exampleInput",
-  placeholder: "Placeholder",
+export const Default: Story = {
+  args: {
+    name: "exampleInput",
+    id: "exampleInput",
+    placeholder: "Placeholder",
+  },
 };
 
-export const PlaceholderTurnsLabel = Template.bind({});
-PlaceholderTurnsLabel.args = {
-  name: "exampleInput",
-  id: "exampleInput",
-  placeholder: "Placeholder",
-  placeholderLabel: true,
+export const PlaceholderTurnsLabel: Story = {
+  args: {
+    name: "exampleInput",
+    id: "exampleInput",
+    placeholder: "Placeholder",
+    placeholderLabel: true,
+  },
 };
 
-export const WithLabel = Template.bind({});
-WithLabel.args = {
-  label: "Label",
-  name: "exampleInput",
-  id: "exampleInput",
+export const WithLabel: Story = {
+  args: {
+    label: "Label",
+    name: "exampleInput",
+    id: "exampleInput",
+  },
 };
 
-export const WithError = Template.bind({});
-WithError.args = {
-  name: "exampleInput",
-  id: "exampleInput",
-  placeholder: "Placeholder",
-  errorMsg: "Error message",
+export const WithError: Story = {
+  args: {
+    name: "exampleInput",
+    id: "exampleInput",
+    placeholder: "Placeholder",
+    errorMsg: "Error message",
+  },
 };
 
-export const WithLabelAndPlaceholder = Template.bind({});
-WithLabelAndPlaceholder.args = {
-  label: "Label",
-  name: "exampleInput",
-  id: "exampleInput",
-  placeholder: "Placeholder",
+export const WithLabelAndPlaceholder: Story = {
+  args: {
+    label: "Label",
+    name: "exampleInput",
+    id: "exampleInput",
+    placeholder: "Placeholder",
+  },
 };

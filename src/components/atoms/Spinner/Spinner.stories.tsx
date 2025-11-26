@@ -1,9 +1,9 @@
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Spinner } from "@components/atoms/Spinner";
 import readme from "./Spinner.md?raw";
 
 // Metadatos sobre el componente
-export default {
+const meta = {
   title: "Components/atoms/Spinner", // Categoría y nombre
   component: Spinner,
   argTypes: {},
@@ -14,11 +14,12 @@ export default {
       },
     },
   },
-} as Meta<typeof Spinner>;
+} satisfies Meta<typeof Spinner>;
 
-// Plantilla base
-const Template: StoryFn<typeof Spinner> = (args) => <Spinner />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 // Variaciones de la plantilla
-export const Default = Template.bind({});
-Default.args = {};
+export const Default: Story = {
+  args: {},
+};
