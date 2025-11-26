@@ -1,50 +1,47 @@
-# React + TypeScript + Vite
+# VCL Components
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**VCL Components** es una librería de componentes React construida con TypeScript, Vite y SCSS, diseñada para ofrecer componentes reutilizables y consistentes siguiendo la metodología Atomic Design.
 
-Currently, two official plugins are available:
+## 📦 Instalación
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para instalar la librería en tu proyecto:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install @vcrespolozano/vcl-components
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Asegúrate de tener configurado el registro de GitHub Packages si es necesario (ver `.npmrc` en tu proyecto consumidor).
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 🚀 Uso
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Importa los componentes directamente en tu aplicación React:
+
+```tsx
+import { Button, Input } from "@vcrespolozano/vcl-components";
+
+function App() {
+  return (
+    <div>
+      <Input placeholder="Escribe algo..." />
+      <Button label="Enviar" onClick={() => console.log("Click!")} />
+    </div>
+  );
+}
 ```
+
+## 🛠️ Desarrollo y Contribución
+
+Si deseas contribuir al desarrollo de esta librería, crear nuevos componentes o modificar los existentes, por favor consulta nuestra guía detallada:
+
+👉 **[Guía de Contribución y Desarrollo (CONTRIBUTING.md)](./CONTRIBUTING.md)**
+
+Allí encontrarás información sobre:
+- Cómo configurar el entorno local.
+- Cómo usar **Storybook** para desarrollar componentes aislados.
+- La estructura del proyecto (Atomic Design).
+- Cómo crear nuevos átomos y moléculas.
+- Buenas prácticas y convenciones de estilo.
+
+## 📄 Licencia
+
+[MIT](LICENSE) (o la licencia que corresponda)
