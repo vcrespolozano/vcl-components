@@ -2,10 +2,27 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "@components/atoms/Button";
 import readme from "./Button.md?raw";
 
+// Componente wrapper para manejo de onClick
+function ButtonWrapper(
+  props: Omit<React.ComponentProps<typeof Button>, "onClick">
+) {
+  const onClick = () => alert("Button clicked");
+  return (
+    <Button
+      {...(props as React.ComponentProps<typeof Button>)}
+      onClick={onClick}
+    />
+  );
+}
+
+type StoryMetaType = Omit<Meta<typeof Button>, "component"> & {
+  component: typeof ButtonWrapper;
+};
+
 // Metadatos sobre el componente
-const meta = {
-  title: "Components/atoms/Button", // Categoría y nombre
-  component: Button,
+const meta: StoryMetaType = {
+  title: "Components/atoms/Button",
+  component: ButtonWrapper,
   argTypes: {},
   parameters: {
     docs: {
@@ -14,7 +31,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Button>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -41,7 +41,11 @@ function RadioCardDemo() {
   );
 }
 
-const meta = {
+type StoryMetaType = Omit<Meta<typeof Card>, "component"> & {
+  component: typeof Card;
+};
+
+const meta: StoryMetaType = {
   title: "Components/molecules/Card",
   component: Card,
   argTypes: {},
@@ -52,7 +56,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Card>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

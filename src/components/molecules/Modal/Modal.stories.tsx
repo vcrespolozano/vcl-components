@@ -5,21 +5,31 @@ import { useState } from "react";
 import { Button } from "@components/atoms/Button";
 
 // Componente wrapper para usar hooks
-function ModalDemo(props: React.ComponentProps<typeof Modal>) {
+function ModalDemo(
+  props: Omit<React.ComponentProps<typeof Modal>, "visible" | "onClose">
+) {
   const [visible, setVisible] = useState<boolean>(false);
 
   return (
     <div className="sandbox">
       <Button label="Show Modal" onClick={() => setVisible(true)} />
-      <Modal {...props} visible={visible} onClose={() => setVisible(false)} />
+      <Modal
+        {...(props as React.ComponentProps<typeof Modal>)}
+        visible={visible}
+        onClose={() => setVisible(false)}
+      />
     </div>
   );
 }
 
+type StoryMetaType = Omit<Meta<typeof Modal>, "component"> & {
+  component: typeof ModalDemo;
+};
+
 // Metadatos sobre el componente
-const meta = {
-  title: "Components/molecules/Modal", // Categoría y nombre
-  component: Modal,
+const meta: StoryMetaType = {
+  title: "Components/molecules/Modal",
+  component: ModalDemo,
   argTypes: {},
   parameters: {
     docs: {
@@ -28,8 +38,7 @@ const meta = {
       },
     },
   },
-  render: (args) => <ModalDemo {...args} />,
-} satisfies Meta<typeof Modal>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

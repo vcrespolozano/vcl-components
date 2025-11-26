@@ -21,10 +21,14 @@ function ToastDemo() {
   );
 }
 
+type StoryMetaType = Omit<Meta<typeof Toast>, "component"> & {
+  component: typeof ToastDemo;
+};
+
 // Metadatos sobre el componente
-const meta = {
-  title: "Components/atoms/Toast", // Categoría y nombre
-  component: Toast,
+const meta: StoryMetaType = {
+  title: "Components/atoms/Toast",
+  component: ToastDemo,
   argTypes: {},
   parameters: {
     docs: {
@@ -33,8 +37,7 @@ const meta = {
       },
     },
   },
-  render: () => <ToastDemo />,
-} satisfies Meta<typeof Toast>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
